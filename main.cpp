@@ -23,5 +23,6 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 int main()
 {
     populateCodeBook();
+    determineProcess();
     return 0;
 }
