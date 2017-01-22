@@ -22,6 +22,61 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 //Declare Global Variables
 CodeBook myCodeBook;
 
+void determineProcess()
+{
+    //Welcome user
+    //Give option to either encrypt, decrypt, or exit
+
+    //Declare Variables
+    bool continueOperations;
+    int userChoice;
+    char userInputForContinue;
+
+    do
+    {
+        //Determine the path the user wants to take
+        std::cout << std::setw(80);
+        std::cout << "Welcome! I can provide three functions:" << std::endl << "1. Encrypt"
+                  << std::endl << "2. Decrypt" << std::endl << "3. Exit" << std::endl
+                  << "What would you like to do:";
+        std::cin >> userChoice;
+
+        switch(userChoice)
+        {
+            case 1:
+                encryptFile();
+                break;
+            case 2:
+                decryptFile();
+                break;
+            case 3:
+                std::cout << std::setw(80) << "Have a nice day!";
+                exit(0);
+            default:
+                std::cout << std::setw(80) << "Sorry! That is not a valid answer,"
+                << "let's try this again." << std::endl;
+                determineProcess();
+                break;
+        }
+
+        std::cout << std::setw(80) << "Would you like to continue? (Y or N):";
+        std::cin >> userInputForContinue;
+
+        if (toupper(userInputForContinue) == 'Y')
+        {
+            continueOperations = true;
+        }
+        else
+        {
+            continueOperations = false;
+        }
+    }
+    while (continueOperations);
+
+    std::cout << std::setw(80) << "Have a nice day!";
+    exit(0);
+}
+
 void populateCodeBook()
 {
     //Declare Variables
