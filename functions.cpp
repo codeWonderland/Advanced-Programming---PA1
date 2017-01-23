@@ -24,8 +24,6 @@ CodeBook myCodeBook;
 
 void determineProcess()
 {
-    //Welcome user
-    //Give option to either encrypt, decrypt, or exit
 
     //Declare Variables
     bool continueOperations;
@@ -59,6 +57,7 @@ void determineProcess()
                 break;
         }
 
+        //Determine whether or not the user wants to continue
         std::cout << std::setw(80) << "Would you like to continue? (Y or N):";
         std::cin >> userInputForContinue;
 
@@ -75,6 +74,51 @@ void determineProcess()
 
     std::cout << std::setw(80) << "Have a nice day!";
     exit(0);
+}
+
+void encryptFile()
+{
+    /*
+     * Ask user for name of input file
+     * Validate file exists
+     * Ask user for name of output file (give warning that if the file already exists it will be wiped
+     * and if it does not then it will create a new file)
+     * Encrypt file based off the CodeBook
+     */
+
+    //Declare Variables
+    std::string fileNameIn, fileNameOut, currentWord;
+    std::ifstream inputFile;
+    std::ofstream outputFile;
+    bool noInput = true;
+
+    //Test to see if input file exists
+    while (noInput)
+    {
+
+        noInput = false;
+
+        //Get File Name:
+        std::cout << std::setw(80);
+        std::cout << "What is the name of the Input File:";
+        std::cin >> fileNameIn;
+
+        //Open File for Input
+        inputFile.open(fileNameIn);
+
+        //In the event of failure, the while statement is triggered
+        if (inputFile.fail())
+        {
+            std::cout << std::setw(80);
+            std::cout << "Couldn't open file";
+            noInput = true;
+        }
+        else
+        {
+            std::cout << std::setw(80);
+            std::cout << "File Opened Successfully!" << std::endl;
+        }
+    }
 }
 
 void populateCodeBook()
@@ -94,7 +138,7 @@ void populateCodeBook()
 
         //Get File Name:
         std::cout << std::setw(80);
-        std::cout << "What is the input file:";
+        std::cout << "What is the name of the CodeBook file:";
         std::cin >> filenameIn;
 
         //Open File for Input
@@ -121,7 +165,6 @@ void populateCodeBook()
     {
         getline(inputFile, lines);
         phrase = "";
-        testNum = 0;
 
         //Parsing through the lines character by character looking for whitespace
         //If any is found then we know that we have hit another word
@@ -146,4 +189,7 @@ void populateCodeBook()
     myCodeBook.setCodeList(codeSet);
     myCodeBook.setWordList(wordSet);
     myCodeBook.setLength();
+
+    std::cout << std::setw(80);
+    std::cout << "CodeBook Populated Successfully!" << std::endl;
 }
