@@ -110,7 +110,7 @@ void determineProcess()
         std::cout << std::setw(80) << "Welcome! I can provide three functions:" << std::endl
                   << std::setw(80) << "1. Encrypt" << std::endl
                   << std::setw(80) << "2. Decrypt" << std::endl
-                  << std::setw(80) << "3. Exit" << std::endl
+                  << std::setw(80) << "3. Exit   " << std::endl
                   << std::setw(80) << "What would you like to do:";
         std::cin >> userChoice;
 
