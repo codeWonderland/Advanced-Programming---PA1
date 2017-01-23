@@ -38,10 +38,11 @@ void determineProcess()
     do
     {
         //Determine the path the user wants to take
-        std::cout << std::setw(80);
-        std::cout << "Welcome! I can provide three functions:" << std::endl << "1. Encrypt"
-                  << std::endl << "2. Decrypt" << std::endl << "3. Exit" << std::endl
-                  << "What would you like to do:";
+        std::cout << std::setw(80) << "Welcome! I can provide three functions:" << std::endl
+                  << std::setw(80) << "1. Encrypt" << std::endl
+                  << std::setw(80) << "2. Decrypt" << std::endl
+                  << std::setw(80) << "3. Exit" << std::endl
+                  << std::setw(80) << "What would you like to do:";
         std::cin >> userChoice;
 
         switch(userChoice)
@@ -57,7 +58,7 @@ void determineProcess()
                 exit(0);
             default:
                 std::cout << std::setw(80) << "Sorry! That is not a valid answer,"
-                << "let's try this again." << std::endl;
+                << " let's try this again." << std::endl;
                 determineProcess();
                 break;
         }
@@ -83,14 +84,6 @@ void determineProcess()
 
 void encryptFile()
 {
-    /*
-     * Ask user for name of input file
-     * Validate file exists
-     * Ask user for name of output file (give warning that if the file already exists it will be wiped
-     * and if it does not then it will create a new file)
-     * Encrypt file based off the CodeBook
-     */
-
     //Declare Variables
     std::string fileNameIn, fileNameOut, lines, currentWord;
     std::ifstream inputFile;
@@ -105,8 +98,7 @@ void encryptFile()
 
         //Get File Name:
         std::cout << std::setw(80);
-        std::cout << "What is the name of the Input File: (Note: the filename must include the format of the file"
-                << "ex. fileName.txt";
+        std::cout << "What is the name of the Input File:";
         std::cin >> fileNameIn;
         std::cout << std::endl;
 
@@ -129,9 +121,7 @@ void encryptFile()
 
     //Get output file name
     std::cout << std::setw(80);
-    std::cout << "What is the name of the Output File: (Note: If the given filename is not existent then one will be"
-              << "created with that name, if the file does exist it will be wiped before the encrypted message is"
-              << "inserted):";
+    std::cout << "What is the name of the Output File:";
     std::cin >> fileNameOut;
     std::cout << std::endl;
 
@@ -157,6 +147,9 @@ void encryptFile()
                 currentWord = "";
             }
         }
+
+        outputFile << myCodeBook.encrypt(currentWord) << " ";
+        currentWord = "";
 
         outputFile << std::endl;
     }
@@ -212,7 +205,7 @@ void populateCodeBook()
         //If any is found then we know that we have hit another word
         for (int h = 0; h < lines.length(); h++)
         {
-            if (lines[h] != ' ')
+            if (lines[h] != ' ' && !inputFile.eof())
             {
                 phrase += lines[h];
             }
@@ -222,7 +215,11 @@ void populateCodeBook()
                 phrase = "";
             }
         }
-        codeSet.push_back(phrase);
+
+        if (phrase != "")
+        {
+            codeSet.push_back(phrase);
+        }
         counter++;
     }
     inputFile.close();
