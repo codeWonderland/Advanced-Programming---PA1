@@ -1,5 +1,5 @@
 /*
-Author: Alice Easter
+Author: Theon Greyjoy
         Class: CSI 240-05
         Assignment: PA 1
 Date Assigned: 01/19/17
@@ -252,15 +252,13 @@ void populateCodeBook()
         //In the event of failure, the while statement is triggered
         if (inputFile.fail())
         {
-            std::cout << std::setw(80);
-            std::cout << "Couldn't Open File!" << std::endl;
+            std::cout << std::setw(80) << "Couldn't Open File!" << std::endl;
             noInput = true;
         }
 
         else
         {
-            std::cout << std::setw(80);
-            std::cout << "File Opened Successfully" << std::endl << std::endl;
+            std::cout << std::setw(80) << "File Opened Successfully" << std::endl << std::endl;
         }
 
     }
@@ -299,6 +297,5 @@ void populateCodeBook()
     myCodeBook.setWordList(wordSet);
     myCodeBook.setLength();
 
-    std::cout << std::setw(80);
-    std::cout << "CodeBook Populated Successfully!" << std::endl;
+    std::cout << std::setw(80) << "CodeBook Populated Successfully!" << std::endl;
 }

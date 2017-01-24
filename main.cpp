@@ -1,5 +1,5 @@
 /*
-Author: Alice Easter
+Author: Theon Greyjoy
         Class: CSI 240-05
         Assignment: PA 1
 Date Assigned: 01/19/17
@@ -17,7 +17,6 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 - purpose of future plagiarism checking)
 */
 
-#include "CodeBook.h"
 #include "functions.h"
 
 int main()
