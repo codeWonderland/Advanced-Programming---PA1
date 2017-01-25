@@ -19,3 +19,224 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 
 #include "CodeBook.h"
 
+void decryptFile(CodeBook& myCodeBook)
+{
+    //Declare Variables
+    std::string fileNameIn, fileNameOut, lines, currentWord;
+    std::ifstream inputFile;
+    std::ofstream outputFile;
+    bool noInput = true;
+
+    //Test to see if input file exists
+    while (noInput)
+    {
+
+        noInput = false;
+
+        //Get File Name:
+        std::cout << std::setw(80);
+        std::cout << "What is the name of the Input File:";
+        std::cin >> fileNameIn;
+        std::cout << std::endl;
+
+        //Open File for Input
+        inputFile.open(fileNameIn);
+
+        //In the event of failure, the while statement is triggered
+        if (inputFile.fail())
+        {
+            std::cout << std::setw(80);
+            std::cout << "Couldn't open file";
+            noInput = true;
+        }
+        else
+        {
+            std::cout << std::setw(80);
+            std::cout << "File Opened Successfully!" << std::endl;
+        }
+    }
+
+    //Get output file name
+    std::cout << std::setw(80);
+    std::cout << "What is the name of the Output File:";
+    std::cin >> fileNameOut;
+    std::cout << std::endl;
+
+    //Open output file
+    outputFile.open(fileNameOut);
+
+    while (!inputFile.eof())
+    {
+        getline(inputFile, lines);
+        currentWord = "";
+
+        //Parsing through the lines character by character looking for whitespace
+        //If any is found then we know that we have hit another word
+        for (int h = 0; h < lines.length(); h++)
+        {
+            if (lines[h] != ' ')
+            {
+                currentWord += lines[h];
+            }
+            else
+            {
+                outputFile << myCodeBook.decrypt(currentWord) << " ";
+                currentWord = "";
+            }
+        }
+
+        outputFile << myCodeBook.decrypt(currentWord) << " ";
+        currentWord = "";
+
+        outputFile << std::endl;
+    }
+    inputFile.close();
+}
+
+void encryptFile(CodeBook& myCodeBook)
+{
+    //Declare Variables
+    std::string fileNameIn, fileNameOut, lines, currentWord;
+    std::ifstream inputFile;
+    std::ofstream outputFile;
+    bool noInput = true;
+
+    //Test to see if input file exists
+    while (noInput)
+    {
+
+        noInput = false;
+
+        //Get File Name:
+        std::cout << std::setw(80);
+        std::cout << "What is the name of the Input File:";
+        std::cin >> fileNameIn;
+        std::cout << std::endl;
+
+        //Open File for Input
+        inputFile.open(fileNameIn);
+
+        //In the event of failure, the while statement is triggered
+        if (inputFile.fail())
+        {
+            std::cout << std::setw(80);
+            std::cout << "Couldn't open file";
+            noInput = true;
+        }
+        else
+        {
+            std::cout << std::setw(80);
+            std::cout << "File Opened Successfully!" << std::endl;
+        }
+    }
+
+    //Get output file name
+    std::cout << std::setw(80);
+    std::cout << "What is the name of the Output File:";
+    std::cin >> fileNameOut;
+    std::cout << std::endl;
+
+    //Open output file
+    outputFile.open(fileNameOut);
+
+    while (!inputFile.eof())
+    {
+        getline(inputFile, lines);
+        currentWord = "";
+
+        //Parsing through the lines character by character looking for whitespace
+        //If any is found then we know that we have hit another word
+        for (int h = 0; h < lines.length(); h++)
+        {
+            if (lines[h] != ' ')
+            {
+                currentWord += lines[h];
+            }
+            else
+            {
+                outputFile << myCodeBook.encrypt(currentWord) << " ";
+                currentWord = "";
+            }
+        }
+
+        outputFile << myCodeBook.encrypt(currentWord) << " ";
+        currentWord = "";
+
+        outputFile << std::endl;
+    }
+    inputFile.close();
+}
+
+void populateCodeBook(CodeBook& myCodeBook)
+{
+    //Declare Variables
+    std::vector<std::string> wordSet, codeSet;
+    std::string filenameIn, lines, phrase;
+    std::ifstream inputFile;
+    bool noInput = true;
+    int counter = 0;
+
+    //Test to see if the codebook file exists
+    while (noInput)
+    {
+
+        noInput = false;
+
+        //Get File Name:
+        std::cout << std::setw(80);
+        std::cout << "What is the name of the CodeBook file:";
+        std::cin >> filenameIn;
+
+        //Open File for Input
+        inputFile.open(filenameIn);
+
+        //In the event of failure, the while statement is triggered
+        if (inputFile.fail())
+        {
+            std::cout << std::setw(80) << "Couldn't Open File!" << std::endl;
+            noInput = true;
+        }
+
+        else
+        {
+            std::cout << std::setw(80) << "File Opened Successfully" << std::endl << std::endl;
+        }
+
+    }
+
+    //Parsing through the file, line by line
+    while (!inputFile.eof())
+    {
+        getline(inputFile, lines);
+        phrase = "";
+
+        //Parsing through the lines character by character looking for whitespace
+        //If any is found then we know that we have hit another word
+        for (int h = 0; h < lines.length(); h++)
+        {
+            if (lines[h] != ' ' && !inputFile.eof())
+            {
+                phrase += lines[h];
+            }
+            else
+            {
+                wordSet.push_back(phrase);
+                phrase = "";
+            }
+        }
+
+        if (phrase != "")
+        {
+            codeSet.push_back(phrase);
+        }
+        counter++;
+    }
+    inputFile.close();
+
+    //Using collected data to populate our Code List
+    myCodeBook.setCodeList(codeSet);
+    myCodeBook.setWordList(wordSet);
+    myCodeBook.setLength();
+
+    std::cout << std::setw(80) << "CodeBook Populated Successfully!" << std::endl;
+}

@@ -21,25 +21,6 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 #define PA1_FUNCTIONS_H
 
 #include "CodeBook.h"
-#include <fstream>
-#include <iomanip>
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * *
- * Purpose: To take in a file that is determined   *
- *      by the user, decrypt that file in          *
- *      accordance with the CodeBook object        *
- *      and output the results in a separate       *
- *      file that is determined by the user.       *
- * Pre: There must already be a file to decrypt    *
- *      and there must be an instance of a         *
- *      CodeBook object to get the encryption      *
- *      code from                                  *
- * Post: This function will create or modify a     *
- *      file that the user determines, empty that  *
- *      file if it exists and then put the         *
- *      decrypted message in it.                   *
- * * * * * * * * * * * * * * * * * * * * * * * * * */
-void decryptFile();
 
 /* * * * * * * * * * * * * * * * * * * * * * * * *
  * Purpose: To prompt the user and see if they   *
@@ -52,33 +33,5 @@ void decryptFile();
  *      or exit the program.                     *
  * * * * * * * * * * * * * * * * * * * * * * * * */
 void determineProcess();
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * *
- * Purpose: To take in a file that is determined   *
- *      by the user, encrypt that file in          *
- *      accordance with the CodeBook object        *
- *      and output the results in a separate       *
- *      file that is determined by the user.       *
- * Pre: There must already be a file to encrypt    *
- *      and there must be an instance of a         *
- *      CodeBook object to get the encryption      *
- *      code from                                  *
- * Post: This function will create or modify a     *
- *      file that the user determines, empty that  *
- *      file if it exists and then put the         *
- *      decrypted message in it.                   *
- * * * * * * * * * * * * * * * * * * * * * * * * * */
-void encryptFile();
-
-/* * * * * * * * * * * * * * * * * * * * * * * *
- * Purpose: To take in a file that has a list  *
- *      of words and corresponding codes for   *
- *      encryption in the form of "word code"  *
- *      and populate a CodeBook object         *
- * Pre: There must be a file that the user can *
- *      reference to within the function       *
- * Post: This function creates a CodeBook      *
- * * * * * * * * * * * * * * * * * * * * * * * */
-void populateCodeBook();
 
 #endif //PA1_FUNCTIONS_H

@@ -23,6 +23,8 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 
 const int SIZE_OF_ARRAY = 2;
 const int WORD_VECTOR_KEY = 0;
@@ -71,6 +73,23 @@ public:
         return code;
     }
 
+    /* * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Purpose: To take in a file that is determined   *
+     *      by the user, decrypt that file in          *
+     *      accordance with the CodeBook object        *
+     *      and output the results in a separate       *
+     *      file that is determined by the user.       *
+     * Pre: There must already be a file to decrypt    *
+     *      and there must be an instance of a         *
+     *      CodeBook object to get the encryption      *
+     *      code from                                  *
+     * Post: This function will create or modify a     *
+     *      file that the user determines, empty that  *
+     *      file if it exists and then put the         *
+     *      decrypted message in it.                   *
+     * * * * * * * * * * * * * * * * * * * * * * * * * */
+    void decryptFile(CodeBook&);
+
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * Purpose: This function will take in a string and search       *
      *      for it in the Code Book's word vector, if it is found    *
@@ -93,7 +112,34 @@ public:
         }
         return word;
     }
-};
 
+    /* * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Purpose: To take in a file that is determined   *
+     *      by the user, encrypt that file in          *
+     *      accordance with the CodeBook object        *
+     *      and output the results in a separate       *
+     *      file that is determined by the user.       *
+     * Pre: There must already be a file to encrypt    *
+     *      and there must be an instance of a         *
+     *      CodeBook object to get the encryption      *
+     *      code from                                  *
+     * Post: This function will create or modify a     *
+     *      file that the user determines, empty that  *
+     *      file if it exists and then put the         *
+     *      decrypted message in it.                   *
+     * * * * * * * * * * * * * * * * * * * * * * * * * */
+    void encryptFile(CodeBook&);
+
+    /* * * * * * * * * * * * * * * * * * * * * * * *
+     * Purpose: To take in a file that has a list  *
+     *      of words and corresponding codes for   *
+     *      encryption in the form of "word code"  *
+     *      and populate a CodeBook object         *
+     * Pre: There must be a file that the user can *
+     *      reference to within the function       *
+     * Post: This function creates a CodeBook      *
+     * * * * * * * * * * * * * * * * * * * * * * * */
+    void populateCodeBook(CodeBook&);
+};
 
 #endif //PA1_CODEBOOK_H
