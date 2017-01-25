@@ -1,5 +1,5 @@
 /*
-Author: Theon Greyjoy
+Author: Alice Easter
         Class: CSI 240-05
         Assignment: PA 1
 Date Assigned: 01/19/17
