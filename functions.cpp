@@ -37,8 +37,7 @@ void decryptFile()
         noInput = false;
 
         //Get File Name:
-        std::cout << std::setw(80);
-        std::cout << "What is the name of the Input File:";
+        std::cout << std::setw(80) << "What is the name of the Input File:";
         std::cin >> fileNameIn;
         std::cout << std::endl;
 
@@ -48,20 +47,17 @@ void decryptFile()
         //In the event of failure, the while statement is triggered
         if (inputFile.fail())
         {
-            std::cout << std::setw(80);
-            std::cout << "Couldn't open file";
+            std::cout << std::setw(80) << "Couldn't open file";
             noInput = true;
         }
         else
         {
-            std::cout << std::setw(80);
-            std::cout << "File Opened Successfully!" << std::endl;
+            std::cout << std::setw(80) << "File Opened Successfully!" << std::endl;
         }
     }
 
     //Get output file name
-    std::cout << std::setw(80);
-    std::cout << "What is the name of the Output File:";
+    std::cout << std::setw(80) << "What is the name of the Output File:";
     std::cin >> fileNameOut;
     std::cout << std::endl;
 
@@ -178,20 +174,17 @@ void encryptFile()
         //In the event of failure, the while statement is triggered
         if (inputFile.fail())
         {
-            std::cout << std::setw(80);
-            std::cout << "Couldn't open file";
+            std::cout << std::setw(80) << "Couldn't open file";
             noInput = true;
         }
         else
         {
-            std::cout << std::setw(80);
-            std::cout << "File Opened Successfully!" << std::endl;
+            std::cout << std::setw(80) << "File Opened Successfully!" << std::endl;
         }
     }
 
     //Get output file name
-    std::cout << std::setw(80);
-    std::cout << "What is the name of the Output File:";
+    std::cout << std::setw(80) << "What is the name of the Output File:";
     std::cin >> fileNameOut;
     std::cout << std::endl;
 
