@@ -39,7 +39,7 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
  *      file if it exists and then put the         *
  *      decrypted message in it.                   *
  * * * * * * * * * * * * * * * * * * * * * * * * * */
-void decryptFile();
+void decryptFile(CodeBook);
 
 /* * * * * * * * * * * * * * * * * * * * * * * * *
  * Purpose: To prompt the user and see if they   *
@@ -51,7 +51,7 @@ void decryptFile();
  *      encryption process a decryption process, *
  *      or exit the program.                     *
  * * * * * * * * * * * * * * * * * * * * * * * * */
-void determineProcess();
+void determineProcess(CodeBook);
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
  * Purpose: To take in a file that is determined   *
@@ -68,7 +68,7 @@ void determineProcess();
  *      file if it exists and then put the         *
  *      decrypted message in it.                   *
  * * * * * * * * * * * * * * * * * * * * * * * * * */
-void encryptFile();
+void encryptFile(CodeBook);
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * Purpose: To take in a file that has a list  *
@@ -79,6 +79,6 @@ void encryptFile();
  *      reference to within the function       *
  * Post: This function creates a CodeBook      *
  * * * * * * * * * * * * * * * * * * * * * * * */
-void populateCodeBook();
+void populateCodeBook(CodeBook&);
 
 #endif //PA1_FUNCTIONS_H

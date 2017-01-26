@@ -19,16 +19,14 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 
 #include "functions.h"
 
-//Declare Global Variables
-CodeBook myCodeBook;
-
-void decryptFile()
+void decryptFile(CodeBook tempCodeBook)
 {
     //Declare Variables
     std::string fileNameIn, fileNameOut, lines, currentWord;
     std::ifstream inputFile;
     std::ofstream outputFile;
     bool noInput = true;
+    CodeBook myCodeBook = tempCodeBook;
 
     //Test to see if input file exists
     while (noInput)
@@ -92,13 +90,14 @@ void decryptFile()
     inputFile.close();
 }
 
-void determineProcess()
+void determineProcess(CodeBook myCodeBook)
 {
 
     //Declare Variables
     bool continueOperations;
     int userChoice;
     char userInputForContinue;
+    CodeBook tempCodeBook = myCodeBook;
 
     do
     {
@@ -113,10 +112,10 @@ void determineProcess()
         switch(userChoice)
         {
             case 1:
-                encryptFile();
+                encryptFile(tempCodeBook);
                 break;
             case 2:
-                decryptFile();
+                decryptFile(tempCodeBook);
                 break;
             case 3:
                 std::cout << std::setw(80) << "Have a nice day!";
@@ -124,7 +123,7 @@ void determineProcess()
             default:
                 std::cout << std::setw(80) << "Sorry! That is not a valid answer,"
                 << " let's try this again." << std::endl;
-                determineProcess();
+                determineProcess(tempCodeBook);
                 break;
         }
 
@@ -148,13 +147,14 @@ void determineProcess()
     exit(0);
 }
 
-void encryptFile()
+void encryptFile(CodeBook tempCodeBook)
 {
     //Declare Variables
     std::string fileNameIn, fileNameOut, lines, currentWord;
     std::ifstream inputFile;
     std::ofstream outputFile;
     bool noInput = true;
+    CodeBook myCodeBook = tempCodeBook;
 
     //Test to see if input file exists
     while (noInput)
@@ -219,7 +219,7 @@ void encryptFile()
     inputFile.close();
 }
 
-void populateCodeBook()
+void populateCodeBook(CodeBook& myCodeBook)
 {
     //Declare Variables
     std::vector<std::string> wordSet, codeSet;
