@@ -21,11 +21,6 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 
 int main()
 {
-    //Declare Variables
-    CodeBook myCodeBook;
-
-    //Processing
-    populateCodeBook(myCodeBook);
-    determineProcess(myCodeBook);
+    start();
     return 0;
 }

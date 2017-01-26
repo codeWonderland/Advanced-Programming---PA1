@@ -290,3 +290,13 @@ void populateCodeBook(CodeBook& myCodeBook)
 
     std::cout << std::setw(80) << "CodeBook Populated Successfully!" << std::endl;
 }
+
+void start()
+{
+    //Declare Variables
+    CodeBook myCodeBook;
+
+    //Processing
+    populateCodeBook(myCodeBook);
+    determineProcess(myCodeBook);
+}

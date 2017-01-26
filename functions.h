@@ -81,4 +81,13 @@ void encryptFile(CodeBook);
  * * * * * * * * * * * * * * * * * * * * * * * */
 void populateCodeBook(CodeBook&);
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * *
+ * Purpose: To create an instance of a codebook, *
+ *      populate it, and begin project           *
+ * Pre: Need codebook class                      *
+ * Post: Pushes codebook to the rest of project  *
+ * * * * * * * * * * * * * * * * * * * * * * * * */
+void start();
+
 #endif //PA1_FUNCTIONS_H
