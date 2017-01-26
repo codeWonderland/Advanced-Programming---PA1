@@ -19,14 +19,13 @@ consequences of plagiarism and acknowledge that the assessor of this assignment
 
 #include "functions.h"
 
-void decryptFile(CodeBook tempCodeBook)
+void decryptFile(CodeBook myCodeBook)
 {
     //Declare Variables
     std::string fileNameIn, fileNameOut, lines, currentWord;
     std::ifstream inputFile;
     std::ofstream outputFile;
     bool noInput = true;
-    CodeBook myCodeBook = tempCodeBook;
 
     //Test to see if input file exists
     while (noInput)
@@ -147,14 +146,13 @@ void determineProcess(CodeBook myCodeBook)
     exit(0);
 }
 
-void encryptFile(CodeBook tempCodeBook)
+void encryptFile(CodeBook myCodeBook)
 {
     //Declare Variables
     std::string fileNameIn, fileNameOut, lines, currentWord;
     std::ifstream inputFile;
     std::ofstream outputFile;
     bool noInput = true;
-    CodeBook myCodeBook = tempCodeBook;
 
     //Test to see if input file exists
     while (noInput)
